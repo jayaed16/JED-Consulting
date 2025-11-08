@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JED Consulting — Modern • Luxury • Corporate</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --black:#0A0A0A;
+      --white:#F9F9F9;
+      --gold:#D5C59F;
+      --gray:#60636A;
+      --muted:#EDEAE2;
+      --card:#FFFFFF;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--white);color:var(--black);scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto}
+    /* Header */
+    header{position:sticky;top:0;background:rgba(249,249,249,.9);backdrop-filter:saturate(180%) blur(6px);border-bottom:1px solid rgba(0,0,0,.06);z-index:1000}
+    .nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.2rem}
+    .logo{font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.4px}
+    .logo small{font-family:'Inter';font-weight:400;font-size:.8rem;color:var(--gray);margin-left:.4rem}
+    .nav a{margin-left:1.2rem;font-weight:500}
+    .btn{display:inline-block;padding:.7rem 1.1rem;border:1px solid var(--black);border-radius:6px}
+    .btn.primary{background:var(--gold);border-color:var(--gold);color:var(--black);font-weight:700}
+    .btn.ghost{border-color:var(--black)}
+    
+    #hero{
+    position:relative;
+    color:var(--white);
+    padding:6.5rem 0 5rem;
+    min-height:420px;
+    overflow:hidden;
+    }
+    .hero-inner{
+    max-width:1200px;margin:0 auto;padding:0 1.2rem;
+    display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:center;
+    position:relative;z-index:1;}
+
+    /* Sections */
+    section{max-width:1200px;margin:0 auto;padding:3.5rem 1.2rem}
+    .section-title{font-family:'Playfair Display',serif;font-size:2rem;margin:0 0 .8rem}
+    .section-sub{color:var(--gray);margin-top:.2rem}
+    /* Services */
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.2rem}
+    .card{background:var(--card);border:1px solid var(--muted);border-radius:10px;padding:1.2rem}
+    .card h3{margin:.2rem 0 .4rem;font-size:1.2rem}
+    .card p{color:var(--gray);font-size:.95rem}
+    .chip{display:inline-block;border:1px solid var(--gold);color:#3c3a33;border-radius:2rem;padding:.25rem .6rem;font-size:.75rem;margin:.25rem .25rem .1rem 0}
+    /* Process */
+    .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+    .step{border-left:4px solid var(--gold);background:#fff;border-radius:6px;padding:1rem;border:1px solid var(--muted)}
+    .step strong{display:block;margin-bottom:.3rem}
+    /* Portfolio */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .mock{background:linear-gradient(180deg,#eee,#ddd);border:1px solid #d9d4c5;border-radius:12px;height:180px;position:relative;overflow:hidden}
+    .mock::after{content:"Demo";position:absolute;bottom:10px;right:12px;background:var(--black);color:var(--white);font-size:.75rem;padding:.2rem .5rem;border-radius:4px}
+    /* Stack */
+    .stack{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+    .tag{border:1px solid var(--muted);border-radius:999px;padding:.4rem .7rem;font-size:.85rem;background:#fff}
+    /* Pricing */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+    .price{border:1px solid var(--muted);border-radius:10px;padding:1.2rem;background:#fff}
+    .price h3{margin-top:0}
+    .price .amount{font-size:1.8rem;font-weight:800}
+    .small{font-size:.85rem;color:var(--gray)}
+    /* FAQ */
+    details{border:1px solid var(--muted);border-radius:8px;padding:.8rem 1rem;background:#fff}
+    details+details{margin-top:.6rem}
+    summary{cursor:pointer;font-weight:600}
+    /* Contact */
+    form{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-top:1rem}
+    form input, form textarea{width:100%;padding:.8rem;border-radius:6px;border:1px solid var(--muted);font-family:inherit}
+    form textarea{grid-column:1/-1;min-height:120px}
+    .footer{background:#0f0f0f;color:#cfcfcf;padding:2rem 1.2rem;margin-top:2rem}
+    .footer-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+    /* Responsive */
+    @media (max-width:960px){
+      .hero-inner{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr 1fr}
+      .grid{grid-template-columns:1fr 1fr}
+      .pricing{grid-template-columns:1fr}
+      form{grid-template-columns:1fr}
+    }
+  
+    /* === Upgrades: subtle motion & luxe accents === */
+    #hero h1 { position: relative; }
+    #hero h1::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -14px;
+      width: 180px;
+      height: 2px;
+      background: linear-gradient(90deg, #b7a67a, #d5c59f, #b7a67a);
+      background-size: 200% 100%;
+      animation: gold-sheen 6s linear infinite;
+      border-radius: 2px;
+      opacity: .9;
+    }
+    @keyframes gold-sheen {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    .reveal { opacity: 0; transform: translateY(16px); transition: all .7s ease; }
+    .reveal.show { opacity: 1; transform: none; }
+    .marquee-wrap {
+      background: linear-gradient(180deg, #fafafa, #fff);
+      border-top: 1px solid rgba(0,0,0,.06);
+      border-bottom: 1px solid rgba(0,0,0,.06);
+      padding: 1rem 0;
+      overflow: hidden;
+    }
+    .marquee {
+      display: flex;
+      gap: 3rem;
+      white-space: nowrap;
+      animation: marquee 18s linear infinite;
+      will-change: transform;
+    }
+    .marquee:hover { animation-play-state: paused; }
+    .marquee .logo-chip {
+      border: 1px solid var(--muted);
+      background: #fff;
+      border-radius: 999px;
+      padding: .5rem 1rem;
+      font-size: .9rem;
+      color: var(--gray);
+    }
+    @keyframes marquee {
+      from { transform: translateX(0%); }
+      to   { transform: translateX(-50%); }
+    }
+    .mock { transition: transform .2s ease, box-shadow .2s ease; }
+    .mock:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(0,0,0,.12); }
+    .mock::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120% 120% at 80% 0%, rgba(213,197,159,.18), transparent 40%);
+      opacity: 0;
+      transition: opacity .2s ease;
+      pointer-events: none;
+    }
+    .mock:hover::before { opacity: 1; }
+    .sticky-cta {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 999;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      border-radius: 999px;
+      padding: .9rem 1.2rem;
+      font-weight: 700;
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      cursor: pointer;
+    }
+    .sticky-cta:hover { filter: brightness(1.02); }
+    .card, .price, details, .step {
+      border-image: linear-gradient(90deg, rgba(213,197,159,.6), rgba(0,0,0,.08)) 1;
+    }
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--white);color:#0a0a0a;scroll-behavior:smooth}
+a{color:inherit;text-decoration:none}
+
+/* Header */
+header{position:sticky;top:0;background:rgba(249,249,249,.9);backdrop-filter:blur(6px);border-bottom:1px solid rgba(0,0,0,.06);z-index:1000}
+.nav{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.2rem}
+.logo{font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.3px}
+.logo small{font-family:'Inter';font-weight:400;font-size:.8rem;color:var(--gray);margin-left:.4rem}
+.nav a{margin-left:1.2rem;font-weight:500}
+.btn{display:inline-block;padding:.7rem 1.1rem;border:1px solid var(--black);border-radius:6px}
+.btn.primary{background:var(--gold);border-color:var(--gold);color:var(--black);font-weight:700}
+
+/* HERO full-bleed */
+.hero-bleed{
+  background:var(--black);
+  width:100vw;
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+}
+#hero{
+  position:relative;
+  color:var(--white);
+  padding:6.5rem 0 5rem;
+  min-height:420px;
+  overflow:hidden;
+}
+.hero-inner{
+  max-width:1200px;margin:0 auto;padding:0 1.2rem;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:2rem;align-items:center;
+  position:relative;z-index:1;
+}
+.kicker{color:var(--gold);text-transform:uppercase;letter-spacing:.2rem;font-size:.8rem}
+h1{font-family:'Playfair Display',serif;font-size:3rem;line-height:1.15;margin:.6rem 0;position:relative}
+h1::after{content:"";position:absolute;left:0;bottom:-14px;width:180px;height:2px;background:linear-gradient(90deg,#CBBE94,#E8DFBF,#CBBE94);border-radius:2px}
+#hero p{color:#f1f1f1;max-width:640px}
+
+/* Stat cards */
+.stat-wrap{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);padding:1rem;border-radius:10px;text-align:center}
+.stat strong{display:block;font-size:1.2rem;color:#fff}
+
+/* Gold lines across entire hero */
+.hero-lines{
+  position:absolute; inset:0; pointer-events:none; z-index:0; opacity:.18;
+}
+.hero-lines svg{
+  position:absolute; width:140%; height:140%; top:-20%; left:-20%;
+}
+.hero-lines .line{
+  fill:none; stroke:url(#swirlGradient); stroke-width:1.2; stroke-linecap:round; stroke-linejoin:round;
+  animation:lineFloat 11s ease-in-out infinite alternate;
+}
+@keyframes lineFloat{from{transform:translate3d(-4px,-1px,0)}to{transform:translate3d(4px,1px,0)}}
+@media (prefers-reduced-motion:reduce){.hero-lines .line{animation:none}}
+
+/* Marquee */
+.marquee-wrap{position:relative;background:linear-gradient(180deg,#fafafa,#fff);border-top:1px solid rgba(0,0,0,.06);border-bottom:1px solid rgba(0,0,0,.06);padding:.6rem 0;overflow:hidden;white-space:nowrap}
+.marquee-loop{display:inline-flex;gap:1.2rem;align-items:center;animation:marquee 20s linear infinite;will-change:transform}
+.marquee-wrap:hover .marquee-loop{animation-play-state:paused}
+.logo-chip{border:1px solid var(--muted);background:#fff;border-radius:999px;padding:.5rem 1rem;font-size:.9rem;color:var(--gray);white-space:nowrap}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* Sections */
+section{max-width:1200px;margin:0 auto;padding:3.2rem 1.2rem}
+.section-title{font-family:'Playfair Display',serif;font-size:2rem;margin:0 0 .6rem}
+.section-sub{color:var(--gray);margin-top:.2rem}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.2rem}
+.card{background:#fff;border:1px solid var(--muted);border-radius:10px;padding:1.2rem}
+.card h3{margin:.2rem 0 .4rem;font-size:1.2rem}
+.card p{color:var(--gray);font-size:.95rem}
+
+/* Responsive */
+@media (max-width:960px){
+  .hero-inner{grid-template-columns:1fr}
+  .stat-wrap{grid-template-columns:1fr 1fr}
+  .cards{grid-template-columns:1fr}
+}
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav">
+      <div class="logo">JED Consulting <small>Web • Design • Strategy</small></div>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#portfolio">Work</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn" href="#contact">Start a Project</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+    <div class="hero-bleed">
+    <section id="hero">
+        
+
+        <div class="hero-inner">
+        <div>
+            <div class="kicker">Modern • Luxury • Corporate • Web Design</div>
+            <h1>Design that feels intentional, confident, and timeless.</h1>
+            <p><br>Your business deserves a website that looks as good as you do - and works even better.</p>
+            <div style="margin-top:1.2rem;display:flex;gap:.8rem;flex-wrap:wrap">
+            <a class="btn primary" href="#contact">Get a Quote</a>
+            <a class="btn" href="#work" style="border-color:#fff;color:#fff">See Work</a>
+            </div>
+        </div>
+        <div class="stat-wrap">
+            <div class="stat"><strong>2–3 wks</strong><span class="small">Typical delivery</span></div>
+            <div class="stat"><strong>No‑code edits</strong><span class="small">Owner‑friendly</span></div>
+            <div class="stat"><strong>SEO‑ready</strong><span class="small">Fast & clean</span></div>
+            <div class="stat"><strong>Calendar</strong><span class="small">Events you manage</span></div>
+        </div>
+        </div>
+    </section>
+    </div>
+
+  <!-- Logo Marquee (placeholder names; replace with real logos later) -->
+    <div class="marquee-wrap">
+    <div class="marquee-loop">
+        <span class="logo-chip">Clean, Modern Design</span>
+        <span class="logo-chip">Mobile‑Responsive</span>
+        <span class="logo-chip">Easy to Update</span>
+        <span class="logo-chip">Events & Calendars</span>
+        <span class="logo-chip">SEO‑Ready</span>
+        <span class="logo-chip">Analytics</span>
+        <span class="logo-chip">Fast Hosting</span>
+        <span class="logo-chip">Domain Setup</span>
+        <span class="logo-chip">Clean, Modern Design</span>
+        <span class="logo-chip">Mobile‑Responsive</span>
+        <span class="logo-chip">Easy to Update</span>
+        <span class="logo-chip">Events & Calendars</span>
+        <span class="logo-chip">SEO‑Ready</span>
+        <span class="logo-chip">Analytics</span>
+        <span class="logo-chip">Fast Hosting</span>
+        <span class="logo-chip">Domain Setup</span>
+        <span class="logo-chip">Clean, Modern Design</span>
+        <span class="logo-chip">Mobile‑Responsive</span>
+        <span class="logo-chip">Easy to Update</span>
+        <span class="logo-chip">Events & Calendars</span>
+        <span class="logo-chip">SEO‑Ready</span>
+        <span class="logo-chip">Analytics</span>
+        <span class="logo-chip">Fast Hosting</span>
+        <span class="logo-chip">Domain Setup</span>
+        <span class="logo-chip">Clean, Modern Design</span>
+        <span class="logo-chip">Mobile‑Responsive</span>
+        <span class="logo-chip">Easy to Update</span>
+        <span class="logo-chip">Events & Calendars</span>
+        <span class="logo-chip">SEO‑Ready</span>
+        <span class="logo-chip">Analytics</span>
+        <span class="logo-chip">Fast Hosting</span>
+        <span class="logo-chip">Domain Setup</span>
+   </div>
+    <div class="marquee-loop">
+        <span class="logo-chip">Clean, Modern Design</span>
+        <span class="logo-chip">Mobile‑Responsive</span>
+        <span class="logo-chip">Easy to Update</span>
+        <span class="logo-chip">Events & Calendars</span>
+        <span class="logo-chip">SEO‑Ready</span>
+        <span class="logo-chip">Analytics</span>
+        <span class="logo-chip">Fast Hosting</span>
+        <span class="logo-chip">Domain Setup</span>
+    </div>
+    </div>
+
+  <!-- Services -->
+  <section id="services" class="reveal">
+    <h2 class="section-title">Services</h2>
+    <p class="section-sub">Clear packages, real outcomes. Pick the scope that fits where you are.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Launch Site (3–5 pages)</h3>
+        <p>Brand‑aligned one‑pager or small site to establish credibility fast.</p>
+        <div>
+          <span class="chip">Responsive</span>
+          <span class="chip">Copy assist</span>
+          <span class="chip">Contact form</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Redesign & Upgrade</h3>
+        <p>Modernize visuals, structure, and messaging without losing your domain.</p>
+        <div>
+          <span class="chip">SEO cleanup</span>
+          <span class="chip">Analytics</span>
+          <span class="chip">Faster pages</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Add‑Ons</h3>
+        <p>Enhancements you can mix in as you grow.</p>
+        <div>
+          <span class="chip">Events calendar</span>
+          <span class="chip">Bookings</span>
+          <span class="chip">Menus / PDF</span>
+          <span class="chip">Email capture</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="reveal">
+    <h2 class="section-title">Process</h2>
+    <p class="section-sub">A simple, repeatable path from kickoff to launch.</p>
+    <div class="steps">
+      <div class="step"><strong>1. Discovery</strong><span class="small">30‑min call to clarify goals, audience, and scope.</span></div>
+      <div class="step"><strong>2. Design</strong><span class="small">Homepage concept + style system for sign‑off.</span></div>
+      <div class="step"><strong>3. Build</strong><span class="small">Responsive pages, forms, calendar integration.</span></div>
+      <div class="step"><strong>4. Launch</strong><span class="small">Domain connect, analytics, handoff video.</span></div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="reveal">
+    <h2 class="section-title">Selected Work</h2>
+    <p class="section-sub">Demo projects to show visual range. Replace with real client work as you go.</p>
+    <div class="grid" style="margin-top:1rem">
+      <div class="mock" title="Boutique Café — Coming soon"></div>
+      <div class="mock" title="Yoga Studio — Coming soon"></div>
+      <div class="mock" title="Salon — Coming soon"></div>
+    </div>
+  </section>
+
+  <!-- Stack & Platforms -->
+  <section id="stack" class="reveal">
+    <h2 class="section-title">Tech & Platforms</h2>
+    <p class="section-sub">Right‑sized tools for small business websites.</p>
+    <div class="stack">
+      <div class="tag">HTML • CSS • JS</div>
+      <div class="tag">Netlify / Vercel Hosting</div>
+      <div class="tag">Squarespace (owner‑friendly)</div>
+      <div class="tag">Google Calendar Embed</div>
+      <div class="tag">FormSubmit / Netlify Forms</div>
+      <div class="tag">Basic SEO & Analytics</div>
+    </div>
+  </section>
+
+  <!-- Pricing (optional to show) -->
+  <section id="pricing" class="reveal">
+    <h2 class="section-title">Packages</h2>
+    <p class="section-sub">Transparent starting points — custom quotes available.</p>
+    <div class="pricing">
+      <div class="price">
+        <h3>Starter</h3>
+        <div class="amount">$750</div>
+        <div class="small">3–4 sections • 1 week</div>
+      </div>
+      <div class="price">
+        <h3>Standard</h3>
+        <div class="amount">$1,250</div>
+        <div class="small">Up to 5 pages • 2 weeks</div>
+      </div>
+      <div class="price">
+        <h3>Premium</h3>
+        <div class="amount">$2,000+</div>
+        <div class="small">Custom features • as scoped</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="reveal">
+    <h2 class="section-title">FAQ</h2>
+    <details>
+      <summary>Can I keep my current domain?</summary>
+      <p class="small">Yes. We point your existing domain to the new site at launch — email and branding remain intact.</p>
+    </details>
+    <details>
+      <summary>How do I update events or content later?</summary>
+      <p class="small">You’ll get a simple admin workflow (e.g., Google Calendar embed or Squarespace editor) and a short video handoff.</p>
+    </details>
+    <details>
+      <summary>Is there a monthly fee?</summary>
+      <p class="small">Static hosting on Netlify/Vercel is free. Domains cost ~$12–$20/yr. Optional maintenance plans are available.</p>
+    </details>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="reveal">
+    <h2 class="section-title">Start a Project</h2>
+    <p class="section-sub">Tell me a little about your business and goals.</p>
+    <form name="contact">
+      <input name="name" placeholder="Your Name" required />
+      <input name="email" type="email" placeholder="Email" required />
+      <input name="business" placeholder="Business Name" />
+      <textarea name="message" placeholder="What are you trying to achieve?"></textarea>
+      <button class="btn primary" type="submit">Send Inquiry</button>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>© <span id="year"></span> JED Consulting</div>
+      <div class="small">Web • Design • Strategy</div>
+    </div>
+  </footer>
+
+  <!-- Lightweight JS for year + fake form handler -->
+  <script>
+
+  // Reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('show'); });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.querySelector('form[name="contact"]').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Thanks! This demo form is not wired yet. We\'ll connect it to Netlify Forms or FormSubmit on deploy.');
+    });
+  </script>
+
+  <!--
+  TODOs (edit in VS Code):
+  - Replace “Selected Work” mocks with screenshots of your demos.
+  - Update pricing to your comfort zone or hide the section.
+  - In Contact, set up Netlify Forms or FormSubmit once deployed.
+  - If you prefer Squarespace builds, keep the “Tech & Platforms” line.
+  - Add a Calendly link in Contact if you want bookings.
+  -->
+  <button class="sticky-cta" onclick="location.href='#contact'">Get a Quote</button>
+</body>
+</html>
