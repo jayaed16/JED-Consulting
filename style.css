@@ -296,12 +296,6 @@ a{ color:inherit; text-decoration:none; }
   .footer-bottom{ flex-direction: column; gap: 8px; align-items: flex-start; }
 }
 
-/* make the page under/around the footer the same deep teal */
-html, body {
-  background-color: #0A3D3F;   /* match footer's bottom color */
-  overflow-x: hidden;          /* prevents any 1–2px white scroll bleed */
-}
-
 /* ensure footer has no extra gap */
 .site-footer { margin-bottom: 0; }
 
