@@ -1,11 +1,27 @@
 /* ==========================================================
    J.E.D. Consulting — Teal & Peach (consolidated build)
+   ----------------------------------------------------------
+   Sections:
+   1) Fonts & Design Tokens
+   2) Base / Reset
+   3) Layout Helpers
+   4) Header / Nav
+   5) Buttons
+   6) Hero
+   7) Marquee
+   8) Sections / Typography
+   9) Cards / Features / Grids / Quick Facts
+   10) Footer (full-width teal)
+   11) Reveal-on-scroll
+   12) Responsive tweaks / Quick Facts override
    ========================================================== */
 
-/* Fonts */
+
+/* =================== 1) Fonts =================== */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@500;700&display=swap");
 
-/* ------------ Design tokens ------------ */
+
+/* =================== 2) Design tokens =================== */
 :root{
   /* Colors */
   --bg:#FFF; --surface:#FFF; --surface-2:#FAFAFA; --border:#E4E7E9;
@@ -36,7 +52,8 @@
   --fast:160ms ease;
 }
 
-/* ------------ Base / reset ------------ */
+
+/* =================== 3) Base / reset =================== */
 *,
 *::before,
 *::after{ box-sizing:border-box; }
@@ -45,26 +62,30 @@ body{
   margin:0; background:var(--bg); color:var(--text);
   font-family:var(--font-sans); font-size:var(--fs-md); line-height:var(--leading-normal);
   -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:hidden; /* prevent horizontal scroll from full-width footer/marquee */
 }
+
 img,svg,video,canvas{ display:block; max-width:100%; height:auto; }
 
 /* Links: no underlines anywhere + inherit color */
 a{ color:inherit; text-decoration:none; }
 
-/* Focus ring */
+/* Focus ring (accessible but subtle) */
 :focus-visible{
   outline:0;
   box-shadow:0 0 0 3px rgba(111,209,199,.35), 0 0 0 6px rgba(10,61,63,.25);
   border-radius:10px;
 }
 
-/* ------------ Layout helpers ------------ */
+
+/* =================== 4) Layout helpers =================== */
 .container{ width:min(calc(100% - 2*var(--pad)), var(--container)); margin-inline:auto; }
 .spacer-xs{height:8px;} .spacer-sm{height:16px;}
 .spacer-md{height:14px;} .spacer-lg{height:26px;} .spacer-xl{height:64px;}
 .center{text-align:center;} .muted{color:var(--muted);}
 
-/* ------------ Header / Nav ------------ */
+
+/* =================== 5) Header / Nav =================== */
 .site-header{
   position:sticky; top:0; z-index:50;
   background:linear-gradient(180deg,#0A3D3F 0%,#0B474A 100%);
@@ -90,7 +111,8 @@ a{ color:inherit; text-decoration:none; }
 .site-header.is-sticky .nav{ padding:8px var(--pad); }
 .site-header.is-sticky .logo{ transform:translateY(-1px); }
 
-/* ------------ Buttons ------------ */
+
+/* =================== 6) Buttons =================== */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:10px;
   padding:12px 20px; border:none; border-radius:999px; cursor:pointer;
@@ -111,7 +133,8 @@ a{ color:inherit; text-decoration:none; }
 .site-header .btn.btn-outline{ border-color:rgba(255,255,255,.92); color:#fff; padding:10px 16px; font-weight:700; }
 .site-header .btn.btn-outline:hover{ background:rgba(255,255,255,.14); color:#fff; }
 
-/* ------------ Hero (compact) ------------ */
+
+/* =================== 7) Hero (compact) =================== */
 .hero{
   background:linear-gradient(120deg,var(--accent-light) 0%, var(--peach) 100%);
   color:var(--accent-dark);
@@ -133,7 +156,8 @@ a{ color:inherit; text-decoration:none; }
 .hero-sub{ margin-top:16px; color:var(--text); font-size:clamp(17px,2vw,21px); max-width:70ch; margin-inline:auto; }
 .hero-actions{ margin-top:20px; display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
 
-/* ------------ Marquee ------------ */
+
+/* =================== 8) Marquee =================== */
 .marquee-wrap{
   position:relative; overflow:hidden; white-space:nowrap;
   background:linear-gradient(180deg,#fbfbfb,#fff);
@@ -144,7 +168,8 @@ a{ color:inherit; text-decoration:none; }
 .logo-chip{ border:1px solid var(--border); background:#fff; border-radius:999px; padding:.5rem 1rem; font-size:.95rem; color:var(--muted); }
 @keyframes marquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-/* ------------ Sections & Typography ------------ */
+
+/* =================== 9) Sections & Typography =================== */
 .section{ padding:clamp(28px,5vw,48px) 0; background:var(--surface); }
 .section-title{
   font-family:var(--font-display);
@@ -153,7 +178,8 @@ a{ color:inherit; text-decoration:none; }
 }
 .section-sub{ color:var(--muted); text-align:center; max-width:70ch; margin:6px auto 18px; }
 
-/* ------------ Cards / Features ------------ */
+
+/* =================== 10) Cards / Features =================== */
 .card{
   background:#fff;
   border:1.5px solid rgba(10,61,63,0.25);           /* visible teal edge */
@@ -199,13 +225,20 @@ a{ color:inherit; text-decoration:none; }
 .quick-facts .feature:hover{ transform:translateY(-3px); box-shadow:0 8px 20px rgba(10,61,63,0.12); }
 .quick-facts .feature .dot{ width:8px; height:8px; border-radius:50%; background:var(--accent-dark); box-shadow:none; }
 
-/* ------------ Grids ------------ */
+
+/* =================== 11) Grids =================== */
 .grid-3,.grid-2{ display:grid; gap:clamp(18px,2vw,28px); }
 .grid-3{ grid-template-columns:repeat(3,1fr); }
 .grid-2{ grid-template-columns:repeat(2,1fr); }
 @media (max-width:900px){ .grid-3{ grid-template-columns:1fr 1fr; } }
 @media (max-width:640px){ .grid-3,.grid-2{ grid-template-columns:1fr; } }
 
+
+/* ==========================================================
+   12) Footer — full-width teal, edge-to-edge background
+   Uses the classic 100vw + negative margin trick to escape
+   the centered container while keeping content centered.
+   ========================================================== */
 
 /* ===== FORCE full-width teal footer (color visible edge-to-edge) ===== */
 .site-footer {
@@ -339,7 +372,7 @@ body > *:last-child {
 
 
 
-/* ------------ Reveal-on-scroll ------------ */
+/* =================== 13) Reveal-on-scroll =================== */
 .reveal{ opacity:0; transform:translateY(12px); }
 .reveal.is-visible{ opacity:1; transform:none; transition:opacity .5s ease, transform .5s ease; }
 @media (prefers-reduced-motion:reduce){
@@ -347,13 +380,16 @@ body > *:last-child {
   .reveal{ opacity:1; transform:none; }
 }
 
-/* ------------ Responsive tweaks ------------ */
+
+/* =================== 14) Responsive tweaks =================== */
 @media (max-width:800px){
   .quick-facts .features{ grid-template-columns:1fr; }
 }
 
 
-/* --- Quick Facts: 3 oval teal cards (smaller text) --- */
+/* --- Quick Facts: 3 oval teal cards (smaller text)
+     This overrides the earlier .quick-facts styles above
+     with slightly different spacing / sizing. --- */
 .quick-facts .features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -387,5 +423,248 @@ body > *:last-child {
 @media (max-width: 800px) {
   .quick-facts .features {
     grid-template-columns: 1fr;
+  }
+}
+  
+/* =================== 15) Mobile nav / header tweaks =================== */
+/* On small screens, let the header content wrap and center nicely */
+@media (max-width: 720px) {
+  .nav {
+    flex-wrap: wrap;                    /* allow items to move to new lines */
+    row-gap: 10px;                      /* breathing room between rows */
+  }
+
+  .logo {
+    flex: 1 1 100%;                     /* logo on its own row */
+    justify-content: flex-start;
+  }
+
+  .nav-links {
+    flex: 1 1 100%;                     /* nav links take full width */
+    justify-content: center;            /* center the links */
+    flex-wrap: wrap;                    /* allow links to wrap onto 2 rows */
+    gap: 10px 14px;                     /* row/column gaps */
+  }
+
+  .nav-links a {
+    padding: 6px 10px;                  /* slightly smaller hit area */
+    font-size: var(--fs-sm);            /* keep nav from feeling huge */
+  }
+
+  .nav-cta {
+    flex: 1 1 100%;                     /* Login button on its own row */
+    display: flex;
+    justify-content: center;
+  }
+
+  .site-header .btn.btn-outline {
+    width: auto;                        /* keep natural width */
+    padding-inline: 18px;
+  }
+}
+
+/* Extra-small phones: tighten padding so hero + sections feel comfy */
+@media (max-width: 480px) {
+  .nav {
+    padding-inline: 12px;               /* slightly less side padding */
+  }
+
+  .hero {
+    padding-top: 48px;
+    padding-bottom: 40px;
+  }
+
+  .section {
+    padding: 24px 0;                    /* tighten vertical spacing a bit */
+  }
+}
+/* =================== Mobile Nav =================== */
+
+/* Wrapper for nav links + CTA so we can slide as a block on mobile */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Screen reader only text (for "Toggle navigation") */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Hamburger button - hidden by default (desktop) */
+.nav-toggle {
+  display: none; /* we show it inside the @media rule */
+  background: transparent;
+  border: none;
+  padding: 6px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+/* The three bars of the hamburger */
+.nav-toggle .bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  border-radius: 999px;
+  background: #fff;
+  margin: 4px 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+/* When nav is open, animate bars into an “X” */
+/* When nav is open, animate bars into an X */
+.site-header.nav-open .nav-toggle .bar:nth-of-type(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.site-header.nav-open .nav-toggle .bar:nth-of-type(2) {
+  opacity: 0;
+}
+.site-header.nav-open .nav-toggle .bar:nth-of-type(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+
+/* --- Mobile behaviour --- */
+@media (max-width: 800px) {
+
+  /* Show hamburger on small screens */
+  .nav-toggle {
+    display: inline-flex;
+  }
+
+  /* Turn right side into a dropdown panel */
+  .nav-right {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    padding: 10px var(--pad) 16px;
+    background: linear-gradient(180deg, #0A3D3F 0%, #0B474A 100%);
+    border-top: 1px solid rgba(255,255,255,.18);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    z-index: 40;
+  }
+
+  /* Open state: slide panel down */
+  .site-header.nav-open .nav-right {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Stack links vertically on mobile */
+  .nav-links {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+  }
+
+  /* Make Login button full-width too */
+  .nav-cta {
+    width: 100%;
+  }
+
+  .nav-cta .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+/* =================== Contact page layout =================== */
+
+/* Wider form column, comfy spacing */
+/* Contact page: single-column stack, centered */
+.contact-layout {
+  max-width: 780px;                    /* narrower than full container */
+  margin-inline: auto;                 /* center the column */
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 28px);
+}
+
+
+/* Let the card breathe a bit more on contact page */
+.contact-card {
+  padding: clamp(26px, 3vw, 34px);
+}
+
+/* Modern form styling */
+.contact-form {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent-dark);
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  font: inherit;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  background: #fff;
+  outline: none;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  min-height: 96px;
+}
+
+/* Focus state: soft teal glow */
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  border-color: var(--accent-light);
+  box-shadow: 0 0 0 1px rgba(111, 209, 199, 0.45);
+  background: #fdfefe;
+}
+
+/* Placeholder style a bit softer */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: rgba(74, 78, 82, 0.7);
+}
+
+/* Make submit button span full width on mobile if you want */
+@media (max-width: 640px) {
+  .contact-form .btn {
+    width: 100%;
+    justify-content: center;
   }
 }

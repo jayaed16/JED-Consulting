@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>J.E.D. Consulting LLC — Contact</title>
+  <meta name="description" content="Get in touch with J.E.D. Consulting LLC to talk about your website, client portal, or digital strategy project." />
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Header / Nav -->
+  <header class="site-header">
+    <div class="nav container">
+      <a class="logo" href="/">
+        <span class="logo-dot" aria-hidden="true"></span>
+        <span>J.E.D. Consulting</span>
+      </a>
+
+      <!-- Mobile menu toggle button -->
+      <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Nav + CTA -->
+      <div class="nav-right">
+        <nav id="primary-nav" class="nav-links" aria-label="Main">
+          <a href="/">Home</a>
+          <a href="/web-design.html">Web Design</a>
+          <a href="/other-services.html">Other Services</a>
+          <a href="/about.html">About</a>
+          <a href="/contact.html" aria-current="page">Contact</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn btn-outline" href="https://portal.jed-consulting-llc.com" target="_blank" rel="noopener">
+            Login
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <span class="kicker">Contact</span>
+        <h1 class="hero-title">Tell me about your project.</h1>
+        <p class="hero-sub">
+          Ready for a new website, a refresh, or a portal you can actually edit yourself?
+          Share a few details below and I’ll follow up with next steps, timing, and a clear path forward.
+        </p>
+        <div class="hero-actions">
+          <a class="btn" href="#contact-form">Send a project inquiry</a>
+          <a class="btn btn-outline" href="/web-design.html">View web design options</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact layout: form + details -->
+    <section class="section">
+      <div class="container contact-layout">
+        <!-- Form column -->
+        <article class="card contact-card" id="contact-form">
+          <h2>Project inquiry form</h2>
+          <p class="muted">
+            This doesn’t lock you into anything. It just gives me enough context to respond with something helpful.
+          </p>
+
+          <!-- NOTE: replace the action URL with your real form handler (Formspree, backend, etc.) -->
+          <form class="contact-form" action="https://formspree.io/f/your-form-id" method="POST">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" required />
+            </label>
+
+            <label>
+              <span>Email</span>
+              <input type="email" name="email" required />
+            </label>
+
+            <label>
+              <span>Business / organization name</span>
+              <input type="text" name="business" />
+            </label>
+
+            <label>
+              <span>Current website (if you have one)</span>
+              <input type="url" name="website" placeholder="https://your-site.com" />
+            </label>
+
+            <label>
+              <span>What are you looking for?</span>
+              <select name="project_type" required>
+                <option value="">Select one...</option>
+                <option value="new-site">New website</option>
+                <option value="site-refresh">Refresh of an existing site</option>
+                <option value="client-portal">Client / edit portal</option>
+                <option value="ongoing-support">Ongoing updates &amp; support</option>
+                <option value="not-sure">I’m not sure yet</option>
+              </select>
+            </label>
+
+            <label>
+              <span>Ideal timeline</span>
+              <input type="text" name="timeline" placeholder="For example: hoping to launch in 4–8 weeks" />
+            </label>
+
+            <label>
+              <span>Budget / constraints</span>
+              <textarea name="budget" rows="2" placeholder="You can share a range or just general constraints."></textarea>
+            </label>
+
+            <label>
+              <span>Anything else you’d like to share?</span>
+              <textarea name="details" rows="4" placeholder="Tell me about your business, offers, and what a ‘win’ would look like for this project."></textarea>
+            </label>
+
+            <button class="btn" type="submit">Send message</button>
+          </form>
+        </article>
+
+        <!-- Info column -->
+        <article class="card contact-info">
+          <h2>How I typically work</h2>
+          <p>
+            Most projects start with a short intro email, then a call where we walk through what you need, what you
+            already have in place, and what kind of build makes the most sense.
+          </p>
+
+          <div class="spacer-sm"></div>
+
+          <div class="features">
+            <div class="feature">
+              <span class="dot"></span>
+              <div>
+                <strong>1:1 collaboration.</strong><br />
+                You’ll work directly with me — no getting passed around a big agency team.
+              </div>
+            </div>
+            <div class="feature">
+              <span class="dot"></span>
+              <div>
+                <strong>Clear milestones.</strong><br />
+                You’ll know what I need from you and when each step is happening.
+              </div>
+            </div>
+            <div class="feature">
+              <span class="dot"></span>
+              <div>
+                <strong>Easy handoff.</strong><br />
+                You get training on the Edit Portal so you’re confident making updates.
+              </div>
+            </div>
+          </div>
+
+          <div class="spacer-md"></div>
+
+          <h3>Prefer to email directly?</h3>
+          <p>
+            You can always reach out at
+            <a href="mailto:jayaedais@gmail.com">jayaedais@gmail.com</a>
+            with “Website project” or “Portal project” in the subject line.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Soft reassurance / mini FAQ -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Not sure if you’re “ready” yet?</h2>
+        <p class="section-sub">
+          You don’t need perfect copy, photos, or a fully-baked brand to start.
+          A lot of clients come with “half-finished” pieces — we shape them together.
+        </p>
+
+        <div class="spacer-md"></div>
+
+        <div class="grid-3">
+          <article class="card">
+            <h3>“I only have a rough idea.”</h3>
+            <p>
+              That’s okay. The form just helps us not start from a blank page. We can refine your offer and messaging as we go.
+            </p>
+          </article>
+          <article class="card">
+            <h3>“I’m worried I’ll have to manage tech.”</h3>
+            <p>
+              I’ll handle the setup and launch. After that, the Edit Portal is built so you can make changes in plain language.
+            </p>
+          </article>
+          <article class="card">
+            <h3>“I don’t want to be sold something huge.”</h3>
+            <p>
+              We’ll talk honestly about what you do and don’t need. Sometimes that’s a lean one-pager; sometimes it’s more.
+            </p>
+          </article>
+        </div>
+
+        <div class="spacer-md"></div>
+        <div class="center">
+          <a class="btn" href="#contact-form">Send a quick note</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="logo">
+            <span class="logo-dot"></span><span>J.E.D. Consulting</span>
+          </div>
+          <div class="spacer-xs"></div>
+          <p>Web design that looks great — and works even better.</p>
+        </div>
+        <div>
+          <div class="footer-title">Pages</div>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/web-design.html">Web Design</a>
+            <a href="/other-services.html">Other Services</a>
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer-title">Contact</div>
+          <div class="footer-links">
+            <a href="mailto:jayaedais@gmail.com">jayaedais@gmail.com</a>
+            <a href="https://portal.jed-consulting-llc.com" target="_blank" rel="noopener">Client Portal Login</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> J.E.D. Consulting LLC</span>
+        <span>Powered by the J.E.D. Edit Portal</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
+
